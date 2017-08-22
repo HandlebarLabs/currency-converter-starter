@@ -1,3 +1,11 @@
+# Free React Native Course!
+
+Want the step-by-step on building this app? Checkout my [free video course](http://learn.handlebarlabs.com/p/react-native-basics-build-a-currency-converter) that goes alongside this repo. You'll love it! :)
+
+If you're looking for solutions for each lesson take a look at the [branches](https://github.com/HandlebarLabs/currency-converter-starter/branches). Each lesson has a corresponding branch.
+
+## Create React Native App
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
