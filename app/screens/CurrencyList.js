@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { FlatList, StatusBar, View } from 'react-native';
 
 import { ListItem, Separator } from '../components/List';
