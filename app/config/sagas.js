@@ -10,7 +10,7 @@ import {
 
 export const getLatestRate = currency => fetch(`http://api.fixer.io/latest?base=${currency}`);
 
-function* fetchLatestConversionRates(action) {
+const fetchLatestConversionRates = function* (action) {
   try {
     let currency = action.currency;
     if (currency === undefined) {
@@ -26,10 +26,12 @@ function* fetchLatestConversionRates(action) {
   } catch (error) {
     yield put({ type: CONVERSION_ERROR, error: error.message });
   }
-}
+};
 
-export default function* rootSaga() {
+const rootSaga = function* () {
   yield takeEvery(GET_INITIAL_CONVERSION, fetchLatestConversionRates);
   yield takeEvery(CHANGE_BASE_CURRENCY, fetchLatestConversionRates);
   yield takeEvery(SWAP_CURRENCY, fetchLatestConversionRates);
-}
+};
+
+export default rootSaga;
