@@ -53,7 +53,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         quoteCurrency: action.currency,
-        conversions: setConversions(state, action),
       };
     case GET_INITIAL_CONVERSION:
       return { ...state, conversions: setConversions(state, { currency: state.baseCurrency }) };
