@@ -3,8 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-native-scripts": "1.2.1",
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.3.0",
     "jest-expo": "^20.0.0",
+    "prettier": "^1.5.3",
+    "prettier-eslint": "^6.4.2",
+    "react-native-scripts": "1.2.1",
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -13,14 +21,24 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch"
+    "test": "node node_modules/jest/bin/jest.js --watch",
+    "lint": "eslint app/",
+    "lint:fix": "eslint app/ --fix"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo/vector-icons": "^5.1.0",
+    "color": "^2.0.0",
     "expo": "^20.0.0",
+    "hoist-non-react-statics": "^2.3.0",
+    "moment": "^2.18.1",
+    "prop-types": "^15.5.10",
     "react": "16.0.0-alpha.12",
-    "react-native": "^0.47.2"
+    "react-native": "^0.47.2",
+    "react-native-dropdownalert": "^2.8.0",
+    "react-native-extended-stylesheet": "^0.6.0",
+    "react-navigation": "^1.0.0-beta.11"
   }
 }
