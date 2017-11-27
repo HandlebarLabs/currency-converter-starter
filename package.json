@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.5.0",
-    "eslint-config-airbnb": "^15.1.0",
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.12.0",
+    "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1",
     "jest-expo": "^23.0.0",
     "prettier": "^1.5.3",
-    "prettier-eslint": "^6.4.2",
+    "prettier-eslint": "^8.2.2",
     "react-native-scripts": "1.7.0",
-    "react-test-renderer": "16.0.0"
+    "react-test-renderer": "^16.1.1"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
@@ -29,16 +29,17 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@expo/vector-icons": "^5.1.0",
+    "@expo/vector-icons": "^6.2.0",
     "color": "^2.0.0",
-    "expo": "^23.0.0",
+    "expo": "^23.0.2",
     "hoist-non-react-statics": "^2.3.0",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
-    "react-native": "^0.50.3",
-    "react-native-dropdownalert": "^2.8.0",
-    "react-native-extended-stylesheet": "^0.6.0",
-    "react-navigation": "^1.0.0-beta.19",
+    "react": "^16.1.1",
+    "react-native": "^0.50.4",
+    "react-native-dropdownalert": "^3.1.2",
+    "react-native-extended-stylesheet": "^0.8.0",
+    "react-navigation": "^1.0.0-beta.21",
     "react-redux": "^5.0.4",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.1"
