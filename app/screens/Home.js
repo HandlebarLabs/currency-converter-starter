@@ -10,6 +10,7 @@ import { ClearButton } from '../components/Button';
 import { LastConverted } from '../components/Text';
 import { Header } from '../components/Header';
 import { connectAlert } from '../components/Alert';
+import { ThemeConsumer } from '../components/Theme';
 
 import { changeCurrencyAmount, swapCurrency, getInitialConversion } from '../actions/currencies';
 
@@ -23,7 +24,6 @@ class Home extends Component {
     conversionRate: PropTypes.number,
     lastConvertedDate: PropTypes.object,
     isFetching: PropTypes.bool,
-    primaryColor: PropTypes.string,
     currencyError: PropTypes.string,
     alertWithType: PropTypes.func,
   };
@@ -65,35 +65,39 @@ class Home extends Component {
     }
 
     return (
-      <Container backgroundColor={this.props.primaryColor}>
-        <StatusBar backgroundColor="blue" barStyle="light-content" />
-        <Header onPress={this.handleOptionsPress} />
-        <KeyboardAvoidingView behavior="padding">
-          <Logo tintColor={this.props.primaryColor} />
-          <InputWithButton
-            buttonText={this.props.baseCurrency}
-            onPress={this.handlePressBaseCurrency}
-            defaultValue={this.props.amount.toString()}
-            keyboardType="numeric"
-            onChangeText={this.handleChangeText}
-            textColor={this.props.primaryColor}
-          />
-          <InputWithButton
-            editable={false}
-            buttonText={this.props.quoteCurrency}
-            onPress={this.handlePressQuoteCurrency}
-            value={quotePrice}
-            textColor={this.props.primaryColor}
-          />
-          <LastConverted
-            date={this.props.lastConvertedDate}
-            base={this.props.baseCurrency}
-            quote={this.props.quoteCurrency}
-            conversionRate={this.props.conversionRate}
-          />
-          <ClearButton onPress={this.handleSwapCurrency} text="Reverse Currencies" />
-        </KeyboardAvoidingView>
-      </Container>
+      <ThemeConsumer>
+        {({ themeColor }) => (
+          <Container backgroundColor={themeColor}>
+            <StatusBar backgroundColor="blue" barStyle="light-content" />
+            <Header onPress={this.handleOptionsPress} />
+            <KeyboardAvoidingView behavior="padding">
+              <Logo tintColor={themeColor} />
+              <InputWithButton
+                buttonText={this.props.baseCurrency}
+                onPress={this.handlePressBaseCurrency}
+                defaultValue={this.props.amount.toString()}
+                keyboardType="numeric"
+                onChangeText={this.handleChangeText}
+                textColor={themeColor}
+              />
+              <InputWithButton
+                editable={false}
+                buttonText={this.props.quoteCurrency}
+                onPress={this.handlePressQuoteCurrency}
+                value={quotePrice}
+                textColor={themeColor}
+              />
+              <LastConverted
+                date={this.props.lastConvertedDate}
+                base={this.props.baseCurrency}
+                quote={this.props.quoteCurrency}
+                conversionRate={this.props.conversionRate}
+              />
+              <ClearButton onPress={this.handleSwapCurrency} text="Reverse Currencies" />
+            </KeyboardAvoidingView>
+          </Container>
+        )}
+      </ThemeConsumer>
     );
   }
 }
@@ -111,7 +115,6 @@ const mapStateToProps = (state) => {
     conversionRate: rates[quoteCurrency] || 0,
     lastConvertedDate: conversionSelector.date ? new Date(conversionSelector.date) : new Date(),
     isFetching: conversionSelector.isFetching,
-    primaryColor: state.theme.primaryColor,
     currencyError: state.currencies.error,
   };
 };

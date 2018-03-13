@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { ListItem, Separator } from '../components/List';
 import currencies from '../data/currencies';
 import { changeBaseCurrency, changeQuoteCurrency } from '../actions/currencies';
+import { ThemeConsumer } from '../components/Theme';
 
 class CurrencyList extends Component {
   static propTypes = {
@@ -33,22 +34,26 @@ class CurrencyList extends Component {
     }
 
     return (
-      <View style={{ flex: 1 }}>
-        <StatusBar translucent={false} barStyle="default" />
-        <FlatList
-          data={currencies}
-          renderItem={({ item }) => (
-            <ListItem
-              text={item}
-              selected={item === comparisonCurrency}
-              onPress={() => this.handlePress(item)}
-              iconBackground={this.props.primaryColor}
+      <ThemeConsumer>
+        {({ themeColor }) => (
+          <View style={{ flex: 1 }}>
+            <StatusBar translucent={false} barStyle="default" />
+            <FlatList
+              data={currencies}
+              renderItem={({ item }) => (
+                <ListItem
+                  text={item}
+                  selected={item === comparisonCurrency}
+                  onPress={() => this.handlePress(item)}
+                  iconBackground={themeColor}
+                />
+              )}
+              keyExtractor={item => item}
+              ItemSeparatorComponent={Separator}
             />
-          )}
-          keyExtractor={item => item}
-          ItemSeparatorComponent={Separator}
-        />
-      </View>
+          </View>
+        )}
+      </ThemeConsumer>
     );
   }
 }
@@ -56,7 +61,6 @@ class CurrencyList extends Component {
 const mapStateToProps = state => ({
   baseCurrency: state.currencies.baseCurrency,
   quoteCurrency: state.currencies.quoteCurrency,
-  primaryColor: state.theme.primaryColor,
 });
 
 export default connect(mapStateToProps)(CurrencyList);
