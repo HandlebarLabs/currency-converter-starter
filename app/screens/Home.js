@@ -9,8 +9,8 @@ import { InputWithButton } from '../components/TextInput';
 import { ClearButton } from '../components/Button';
 import { LastConverted } from '../components/Text';
 import { Header } from '../components/Header';
-import { connectAlert } from '../components/Alert';
 import { ThemeConsumer } from '../components/Theme';
+import { AlertConsumer } from '../components/Alert';
 
 import { changeCurrencyAmount, swapCurrency, getInitialConversion } from '../actions/currencies';
 
@@ -119,4 +119,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(connectAlert(Home));
+const ConnectedHome = connect(mapStateToProps)(Home);
+
+export default props => (
+  <AlertConsumer>{context => <ConnectedHome {...context} {...props} />}</AlertConsumer>
+);
