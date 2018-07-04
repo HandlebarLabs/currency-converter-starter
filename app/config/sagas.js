@@ -1,4 +1,6 @@
-import { takeEvery, call, put, select } from 'redux-saga/effects';
+import {
+  takeEvery, call, put, select,
+} from 'redux-saga/effects';
 
 import {
   CHANGE_BASE_CURRENCY,
@@ -8,7 +10,7 @@ import {
   CONVERSION_ERROR,
 } from '../actions/currencies';
 
-export const getLatestRate = currency => fetch(`http://api.fixer.io/latest?base=${currency}`);
+export const getLatestRate = currency => fetch(`http://fixer.handlebarlabs.com/latest?base=${currency}`);
 
 const fetchLatestConversionRates = function* (action) {
   try {
