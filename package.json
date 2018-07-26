@@ -32,10 +32,13 @@
     "@expo/vector-icons": "^6.2.0",
     "color": "^3.0.0",
     "expo": "^27.0.0",
+    "hoist-non-react-statics": "^2.3.0",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "16.3.1",
     "react-native": "^0.55.0",
-    "react-native-extended-stylesheet": "^0.8.0"
+    "react-native-dropdownalert": "^3.1.2",
+    "react-native-extended-stylesheet": "^0.8.0",
+    "react-navigation": "^2.5.5"
   }
 }
