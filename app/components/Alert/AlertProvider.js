@@ -6,8 +6,8 @@ import DropdownAlert from 'react-native-dropdownalert';
 class AlertProvider extends Component {
   static get childContextTypes() {
     return {
-    alertWithType: PropTypes.func,
-    alert: PropTypes.func,
+      alertWithType: PropTypes.func,
+      alert: PropTypes.func,
     };
   }
 
@@ -25,9 +25,10 @@ class AlertProvider extends Component {
   }
 
   render() {
+    const { children } = this.props;
     return (
       <View style={{ flex: 1 }}>
-        {React.Children.only(this.props.children)}
+        {React.Children.only(children)}
         <DropdownAlert
           ref={(ref) => {
             this.dropdown = ref;
