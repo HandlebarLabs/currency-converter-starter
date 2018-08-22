@@ -16,20 +16,22 @@ class CurrencyList extends Component {
   };
 
   handlePress = (currency) => {
-    const { type } = this.props.navigation.state.params;
+    const { navigation, dispatch } = this.props;
+    const { type } = navigation.state.params;
     if (type === 'base') {
-      this.props.dispatch(changeBaseCurrency(currency));
+      dispatch(changeBaseCurrency(currency));
     } else if (type === 'quote') {
-      this.props.dispatch(changeQuoteCurrency(currency));
+      dispatch(changeQuoteCurrency(currency));
     }
 
-    this.props.navigation.goBack(null);
+    navigation.goBack(null);
   };
 
   render() {
-    let comparisonCurrency = this.props.baseCurrency;
-    if (this.props.navigation.state.params.type === 'quote') {
-      comparisonCurrency = this.props.quoteCurrency;
+    const { baseCurrency, quoteCurrency, navigation } = this.props;
+    let comparisonCurrency = baseCurrency;
+    if (navigation.state.params.type === 'quote') {
+      comparisonCurrency = quoteCurrency;
     }
 
     return (
