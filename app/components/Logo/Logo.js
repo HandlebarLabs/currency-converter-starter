@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { View, Text, Keyboard, Animated, Platform, StyleSheet } from 'react-native';
+import {
+  View, Text, Keyboard, Animated, Platform, StyleSheet,
+} from 'react-native';
 
 import styles from './styles';
 
@@ -38,12 +40,14 @@ class Logo extends Component {
   }
 
   keyboardWillShow = () => {
+    const { containerImageWidth, imageWidth } = this.state;
+
     Animated.parallel([
-      Animated.timing(this.state.containerImageWidth, {
+      Animated.timing(containerImageWidth, {
         toValue: styles.$smallContainerSize,
         duration: ANIMATION_DURATION,
       }),
-      Animated.timing(this.state.imageWidth, {
+      Animated.timing(imageWidth, {
         toValue: styles.$smallImageSize,
         duration: ANIMATION_DURATION,
       }),
@@ -51,12 +55,14 @@ class Logo extends Component {
   };
 
   keyboardWillHide = () => {
+    const { containerImageWidth, imageWidth } = this.state;
+
     Animated.parallel([
-      Animated.timing(this.state.containerImageWidth, {
+      Animated.timing(containerImageWidth, {
         toValue: styles.$largeContainerSize,
         duration: ANIMATION_DURATION,
       }),
-      Animated.timing(this.state.imageWidth, {
+      Animated.timing(imageWidth, {
         toValue: styles.$largeImageSize,
         duration: ANIMATION_DURATION,
       }),
@@ -64,14 +70,17 @@ class Logo extends Component {
   };
 
   render() {
+    const { containerImageWidth, imageWidth } = this.state;
+    const { tintColor } = this.props;
+
     const containerImageStyles = [
       styles.containerImage,
-      { width: this.state.containerImageWidth, height: this.state.containerImageWidth },
+      { width: containerImageWidth, height: containerImageWidth },
     ];
     const imageStyles = [
       styles.logo,
-      { width: this.state.imageWidth },
-      this.props.tintColor ? { tintColor: this.props.tintColor } : null,
+      { width: imageWidth },
+      tintColor ? { tintColor } : null,
     ];
 
     return (
