@@ -26,7 +26,8 @@ class Home extends Component {
   };
 
   handleChangeText = (text) => {
-    this.props.dispatch(changeCurrencyAmount(text));
+    const { dispatch } = this.props;
+    dispatch(changeCurrencyAmount(text));
   };
 
   handlePressBaseCurrency = () => {
@@ -40,7 +41,8 @@ class Home extends Component {
   };
 
   handleSwapCurrency = () => {
-    this.props.dispatch(swapCurrency());
+    const { dispatch } = this.props;
+    dispatch(swapCurrency());
   };
 
   handleOptionsPress = () => {
