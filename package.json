@@ -19,8 +19,8 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "lint": "eslint App.js",
-    "lint:fix": "eslint app/ --fix"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@expo/vector-icons": "^6.2.0",
