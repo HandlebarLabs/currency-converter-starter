@@ -19,8 +19,8 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "lint": "eslint App.js app/**/*.js",
-    "lint:fix": "eslint App.js app/**/*.js --fix"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "expo": "^27.0.0",
