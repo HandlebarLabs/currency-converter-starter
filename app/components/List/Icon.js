@@ -16,11 +16,13 @@ const Icon = ({ visible, checkmark, iconBackground }) => {
     return (
       <View style={iconStyles}>
         {checkmark
-          ? <Image
-            source={require('./images/check.png')}
-            style={styles.checkIcon}
-            resizeMode="contain"
-          />
+          ? (
+            <Image
+              source={require('./images/check.png')}
+              style={styles.checkIcon}
+              resizeMode="contain"
+            />
+          )
           : null}
       </View>
     );

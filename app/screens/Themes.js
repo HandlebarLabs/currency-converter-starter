@@ -19,7 +19,8 @@ class Themes extends Component {
 
   handlePressTheme = (color) => {
     console.log('press theme', color);
-    this.props.navigation.goBack();
+    const { navigation } = this.props;
+    navigation.goBack();
   };
 
   render() {
