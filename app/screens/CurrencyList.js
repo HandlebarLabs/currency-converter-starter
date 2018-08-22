@@ -15,7 +15,8 @@ class CurrencyList extends Component {
   };
 
   handlePress = () => {
-    this.props.navigation.goBack(null);
+    const { navigation } = this.props;
+    navigation.goBack(null);
   };
 
   render() {
