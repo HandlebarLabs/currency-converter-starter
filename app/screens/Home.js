@@ -26,7 +26,8 @@ class Home extends Component {
   };
 
   componentWillMount() {
-    this.props.dispatch(getInitialConversion());
+    const { dispatch } = this.props;
+    dispatch(getInitialConversion());
   }
 
   handleChangeText = (text) => {
