@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { ScrollView, StatusBar, Platform, Linking } from 'react-native';
+import {
+  ScrollView, StatusBar, Platform, Linking,
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ListItem, Separator } from '../components/List';
 
@@ -18,7 +20,7 @@ class Options extends Component {
   };
 
   handlePressSite = () => {
-    Linking.openURL('http://fixer.io').catch(() => alert('An error occured.'));
+    Linking.openURL('http://handlebarlabs.com').catch(() => alert('An error occured.'));
   };
 
   render() {
@@ -34,7 +36,7 @@ class Options extends Component {
         />
         <Separator />
         <ListItem
-          text="Fixer.io"
+          text="Handlebar Labs"
           onPress={this.handlePressSite}
           customIcon={<Ionicons name={`${ICON_PREFIX}-link`} size={ICON_SIZE} color={ICON_COLOR} />}
         />
