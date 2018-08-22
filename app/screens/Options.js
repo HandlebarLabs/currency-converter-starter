@@ -23,7 +23,8 @@ class Options extends Component {
   };
 
   handlePressSite = () => {
-    Linking.openURL('http://handlebarlabs.com').catch(() => this.props.alertWithType('error', 'Sorry!', "Fixer.io can't be opened right now."));
+    const { alertWithType } = this.props;
+    Linking.openURL('http://handlebarlabs.com').catch(() => alertWithType('error', 'Sorry!', "Fixer.io can't be opened right now."));
   };
 
   render() {
