@@ -28,9 +28,10 @@ class CurrencyList extends Component {
   };
 
   render() {
-    let comparisonCurrency = this.props.baseCurrency;
-    if (this.props.navigation.state.params.type === 'quote') {
-      comparisonCurrency = this.props.quoteCurrency;
+    const { baseCurrency, quoteCurrency, navigation } = this.props;
+    let comparisonCurrency = baseCurrency;
+    if (navigation.state.params.type === 'quote') {
+      comparisonCurrency = quoteCurrency;
     }
 
     return (
