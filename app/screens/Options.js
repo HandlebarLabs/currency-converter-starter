@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { ScrollView, StatusBar, Platform, Linking } from 'react-native';
+import {
+  ScrollView, StatusBar, Platform, Linking,
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ListItem, Separator } from '../components/List';
 import { connectAlert } from '../components/Alert';
@@ -20,9 +22,7 @@ class Options extends Component {
   };
 
   handlePressSite = () => {
-    Linking.openURL('http://fixer.io').catch(() =>
-      this.props.alertWithType('error', 'Sorry!', "Fixer.io can't be opened right now."),
-    );
+    Linking.openURL('http://handlebarlabs.com').catch(() => this.props.alertWithType('error', 'Sorry!', "Fixer.io can't be opened right now."));
   };
 
   render() {
@@ -38,7 +38,7 @@ class Options extends Component {
         />
         <Separator />
         <ListItem
-          text="Fixer.io"
+          text="Handlebar Labs"
           onPress={this.handlePressSite}
           customIcon={<Ionicons name={`${ICON_PREFIX}-link`} size={ICON_SIZE} color={ICON_COLOR} />}
         />
