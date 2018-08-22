@@ -26,7 +26,7 @@
     "@expo/vector-icons": "^6.2.0",
     "color": "^3.0.0",
     "expo": "^27.0.0",
-    "hoist-non-react-statics": "^2.3.0",
+    "hoist-non-react-statics": "^3.0.1",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "16.3.1",
