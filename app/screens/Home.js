@@ -47,12 +47,12 @@ class Home extends Component {
 
   handlePressBaseCurrency = () => {
     const { navigation } = this.props;
-    navigation.navigate('CurrencyList', { title: 'Base Currency' });
+    navigation.navigate('CurrencyList', { title: 'Base Currency', type: 'base' });
   };
 
   handlePressQuoteCurrency = () => {
     const { navigation } = this.props;
-    navigation.navigate('CurrencyList', { title: 'Quote Currency' });
+    navigation.navigate('CurrencyList', { title: 'Quote Currency', type: 'quote' });
   };
 
   handleSwapCurrency = () => {
