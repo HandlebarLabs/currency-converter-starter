@@ -29,67 +29,84 @@ class Home extends Component {
   };
 
   componentWillMount() {
-    this.props.dispatch(getInitialConversion());
+    const { dispatch } = this.props;
+    dispatch(getInitialConversion());
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.currencyError && !this.props.currencyError) {
-      this.props.alertWithType('error', 'Error', nextProps.currencyError);
+    const { currencyError, alertWithType } = this.props;
+    if (nextProps.currencyError && !currencyError) {
+      alertWithType('error', 'Error', nextProps.currencyError);
     }
   }
 
   handleChangeText = (text) => {
-    this.props.dispatch(changeCurrencyAmount(text));
+    const { dispatch } = this.props;
+    dispatch(changeCurrencyAmount(text));
   };
 
   handlePressBaseCurrency = () => {
-    this.props.navigation.navigate('CurrencyList', { title: 'Base Currency', type: 'base' });
+    const { navigation } = this.props;
+    navigation.navigate('CurrencyList', { title: 'Base Currency' });
   };
 
   handlePressQuoteCurrency = () => {
-    this.props.navigation.navigate('CurrencyList', { title: 'Quote Currency', type: 'quote' });
+    const { navigation } = this.props;
+    navigation.navigate('CurrencyList', { title: 'Quote Currency' });
   };
 
   handleSwapCurrency = () => {
-    this.props.dispatch(swapCurrency());
+    const { dispatch } = this.props;
+    dispatch(swapCurrency());
   };
 
   handleOptionsPress = () => {
-    this.props.navigation.navigate('Options');
+    const { navigation } = this.props;
+    navigation.navigate('Options');
   };
 
   render() {
+    const {
+      isFetching,
+      amount,
+      conversionRate,
+      baseCurrency,
+      quoteCurrency,
+      lastConvertedDate,
+      primaryColor,
+    } = this.props;
+
     let quotePrice = '...';
-    if (!this.props.isFetching) {
-      quotePrice = (this.props.amount * this.props.conversionRate).toFixed(2);
+    if (!isFetching) {
+      quotePrice = (amount * conversionRate).toFixed(2);
     }
 
     return (
-      <Container backgroundColor={this.props.primaryColor}>
+      <Container backgroundColor={primaryColor}>
         <StatusBar backgroundColor="blue" barStyle="light-content" />
         <Header onPress={this.handleOptionsPress} />
         <KeyboardAvoidingView behavior="padding">
-          <Logo tintColor={this.props.primaryColor} />
+          <Logo tintColor={primaryColor} />
           <InputWithButton
-            buttonText={this.props.baseCurrency}
+            buttonText={baseCurrency}
             onPress={this.handlePressBaseCurrency}
-            defaultValue={this.props.amount.toString()}
+            defaultValue={amount.toString()}
             keyboardType="numeric"
             onChangeText={this.handleChangeText}
-            textColor={this.props.primaryColor}
+            textColor={primaryColor}
           />
           <InputWithButton
             editable={false}
-            buttonText={this.props.quoteCurrency}
+            buttonText={quoteCurrency}
             onPress={this.handlePressQuoteCurrency}
             value={quotePrice}
-            textColor={this.props.primaryColor}
+            textColor={primaryColor}
           />
           <LastConverted
-            date={this.props.lastConvertedDate}
-            base={this.props.baseCurrency}
-            quote={this.props.quoteCurrency}
-            conversionRate={this.props.conversionRate}
+            date={lastConvertedDate}
+            base={baseCurrency}
+            quote={quoteCurrency}
+            conversionRate={conversionRate}
           />
           <ClearButton onPress={this.handleSwapCurrency} text="Reverse Currencies" />
         </KeyboardAvoidingView>
@@ -99,8 +116,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const baseCurrency = state.currencies.baseCurrency;
-  const quoteCurrency = state.currencies.quoteCurrency;
+  const { baseCurrency, quoteCurrency } = state.currencies;
   const conversionSelector = state.currencies.conversions[baseCurrency] || {};
   const rates = conversionSelector.rates || {};
 
