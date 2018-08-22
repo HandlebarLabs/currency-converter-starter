@@ -50,9 +50,18 @@ class Home extends Component {
   };
 
   render() {
+    const {
+      isFetching,
+      amount,
+      conversionRate,
+      baseCurrency,
+      quoteCurrency,
+      lastConvertedDate,
+    } = this.props;
+
     let quotePrice = '...';
-    if (!this.props.isFetching) {
-      quotePrice = (this.props.amount * this.props.conversionRate).toFixed(2);
+    if (!isFetching) {
+      quotePrice = (amount * conversionRate).toFixed(2);
     }
 
     return (
@@ -62,23 +71,23 @@ class Home extends Component {
         <KeyboardAvoidingView behavior="padding">
           <Logo />
           <InputWithButton
-            buttonText={this.props.baseCurrency}
+            buttonText={baseCurrency}
             onPress={this.handlePressBaseCurrency}
-            defaultValue={this.props.amount.toString()}
+            defaultValue={amount.toString()}
             keyboardType="numeric"
             onChangeText={this.handleChangeText}
           />
           <InputWithButton
             editable={false}
-            buttonText={this.props.quoteCurrency}
+            buttonText={quoteCurrency}
             onPress={this.handlePressQuoteCurrency}
             value={quotePrice}
           />
           <LastConverted
-            date={this.props.lastConvertedDate}
-            base={this.props.baseCurrency}
-            quote={this.props.quoteCurrency}
-            conversionRate={this.props.conversionRate}
+            date={lastConvertedDate}
+            base={baseCurrency}
+            quote={quoteCurrency}
+            conversionRate={conversionRate}
           />
           <ClearButton onPress={this.handleSwapCurrency} text="Reverse Currencies" />
         </KeyboardAvoidingView>
@@ -88,8 +97,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const baseCurrency = state.currencies.baseCurrency;
-  const quoteCurrency = state.currencies.quoteCurrency;
+  const { baseCurrency, quoteCurrency } = state.currencies;
   const conversionSelector = state.currencies.conversions[baseCurrency] || {};
   const rates = conversionSelector.rates || {};
 
