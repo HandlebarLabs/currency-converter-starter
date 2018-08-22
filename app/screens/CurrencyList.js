@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { FlatList, StatusBar, View } from 'react-native';
+import {
+  FlatList, StatusBar, View,
+} from 'react-native';
 
 import { ListItem, Separator } from '../components/List';
 import currencies from '../data/currencies';
