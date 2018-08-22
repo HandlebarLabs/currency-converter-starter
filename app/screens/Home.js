@@ -25,23 +25,28 @@ class Home extends Component {
   };
 
   handleChangeText = (text) => {
-    this.props.dispatch(changeCurrencyAmount(text));
+    const { dispatch } = this.props;
+    dispatch(changeCurrencyAmount(text));
   };
 
   handlePressBaseCurrency = () => {
-    this.props.navigation.navigate('CurrencyList', { title: 'Base Currency' });
+    const { navigation } = this.props;
+    navigation.navigate('CurrencyList', { title: 'Base Currency' });
   };
 
   handlePressQuoteCurrency = () => {
-    this.props.navigation.navigate('CurrencyList', { title: 'Quote Currency' });
+    const { navigation } = this.props;
+    navigation.navigate('CurrencyList', { title: 'Quote Currency' });
   };
 
   handleSwapCurrency = () => {
-    this.props.dispatch(swapCurrency());
+    const { dispatch } = this.props;
+    dispatch(swapCurrency());
   };
 
   handleOptionsPress = () => {
-    this.props.navigation.navigate('Options');
+    const { navigation } = this.props;
+    navigation.navigate('Options');
   };
 
   render() {
