@@ -14,7 +14,7 @@ export const getLatestRate = currency => fetch(`http://fixer.handlebarlabs.com/l
 
 const fetchLatestConversionRates = function* (action) {
   try {
-    let currency = action.currency;
+    let { currency } = action;
     if (currency === undefined) {
       currency = yield select(state => state.currencies.baseCurrency);
     }
