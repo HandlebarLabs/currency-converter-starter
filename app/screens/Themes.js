@@ -21,8 +21,9 @@ class Themes extends Component {
   };
 
   handlePressTheme = (color) => {
-    this.props.dispatch(changePrimaryColor(color));
-    this.props.navigation.goBack();
+    const { navigation, dispatch } = this.props;
+    dispatch(changePrimaryColor(color));
+    navigation.goBack();
   };
 
   render() {
